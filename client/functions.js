@@ -15,10 +15,12 @@ $(document).ready(function() {
   });
 
   socket.on('colorUpdated', function(data) {
+    console.log(data);
     var childrens = $("#selectable").children();
     for (var i = 0; i < data.currentGrid.length; i++) {
       $(childrens[i]).css('background-color', data.currentGrid[i]);
     }
+     $("#selectable").selectable('refresh');
 
   });
 

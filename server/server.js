@@ -1,5 +1,5 @@
 var io = require('socket.io').listen(9000);
- var colors = []; 
+var colors = []; 
 
 io.sockets.on('connection', function (socket) {
   
@@ -8,7 +8,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('colorChanged', function (data) {
    
     colors = data.newColors;
-    socket.emit('colorUpdated', { currentGrid: colors });
+    socket.broadcast.emit('colorUpdated', { currentGrid: colors });
   });
 
 console.log("New client connected");
